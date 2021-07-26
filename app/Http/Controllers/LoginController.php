@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Contracts\Auth\Middleware\AuthenticatesRequests;
 
 class LoginController extends Controller
 {
@@ -16,7 +16,15 @@ class LoginController extends Controller
     /**
      * @description : logs in user.
      */
-    public function login() {
-        //
+    public function login(AuthRequest $request) {
+        $creds = $request->only('email', 'password');
+
+        if (Auth::attempt($creds)) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('dashboard');
+        }
+
+        return back();
     }
 }
