@@ -34,7 +34,8 @@ class Address extends Model
         'deleted_at',
     ];
 
-    public function contact() {
-        return $this->belongsTo();
+    public function contact() 
+    {
+        return $this->belongsTo(Contact::class);
     }
 }
