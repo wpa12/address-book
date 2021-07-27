@@ -30,7 +30,7 @@ class ContactRequest extends FormRequest
             'last_name' => 'string|required',
             'dob'   => 'date|required',
             'email' => 'email|required',
-            'description' => 'string|nullable',
+            'description' => 'string|required',
         ];
     }
 }

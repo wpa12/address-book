@@ -25,9 +25,7 @@
             @foreach($contacts as $contact)
                 {{-- {{ dd($contact->first_name) }} --}}
                 <x-dashboard.contact.contact-card>
-                    <div>
-                        <img src="avatar" alt="avatar">
-                    </div>
+                    <div class="avatar"></div>
                     <div>
                         {{ $contact->salutation . ' ' . $contact->first_name . ' ' .  $contact->middle_name . ' '. $contact->last_name }}
                     </div>

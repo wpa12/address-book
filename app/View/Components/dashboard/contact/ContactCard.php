@@ -34,12 +34,5 @@ class ContactCard extends Component
     public function render()
     {
         return view('components.dashboard.contact.contact-card');
-        // ->with([
-        //     'salutation' => $this->salutation,
-        //     'first_name' => $this->first_name,
-        //     'middle_name' => $this->middle_name,
-        //     'last_name' => $this->last_name,
-        //     'date_created' => $this->date_created,
-        // ]);
     }
 }
