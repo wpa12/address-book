@@ -1,22 +1,6 @@
 @extends('dashboard.master')
 @section('content')
 
-<style>
-    
-    .element-container {
-        padding-top:10px;
-        padding-bottom:10px;
-    }
-    
-    label {
-        font-weight: 500;
-    }
-    
-    input#other {
-        display:none;
-    }
-    
-</style>
 <div class="row justify-content-center">
     <div class="col-lg-4">
         <form action="/dashboard/contacts/create" method="post">
