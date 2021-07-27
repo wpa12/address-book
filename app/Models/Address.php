@@ -19,6 +19,7 @@ class Address extends Model
         'region',
         'postcode',
         'contact_id',
+        'address_type_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -31,6 +32,7 @@ class Address extends Model
         'region',
         'postcode',
         'contact_id',
+        'address_type_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -39,5 +41,10 @@ class Address extends Model
     public function contact() 
     {
         return $this->belongsTo(Contact::class);
+    }
+
+    public function type () 
+    {
+        return $this->hasOne(Address::class);
     }
 }

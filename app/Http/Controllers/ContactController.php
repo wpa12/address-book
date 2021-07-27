@@ -41,7 +41,7 @@ class ContactController extends Controller
         $contact = Contact::create($request->all());
         $contact->save();
 
-        return redirect('/dashboard/contacts');
+        return redirect('/dashboard/contacts')->with('success', 'Contact created successfully');
 
     }
 
@@ -53,7 +53,9 @@ class ContactController extends Controller
      */
     public function show($id)
     {
-        //
+        $contact = Contact::find($id);
+
+        return view('dashboard.contact.show', compact('contact'));
     }
 
     /**
@@ -76,7 +78,11 @@ class ContactController extends Controller
      */
     public function update(ContactRequest $request, $id)
     {
-        //
+        $contact = Contact::find($id);
+        $contact->fill($request->all());
+        $contact->save();
+
+        return redirect('/dashboard/contacts')->with('success', 'Contact updated successfully');
     }
 
     /**

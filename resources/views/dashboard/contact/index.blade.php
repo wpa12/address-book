@@ -2,6 +2,11 @@
 @section('content')
 
 <div class="row">
+    @if(session('success'))
+    <div class="col-lg-12">
+        <div class="alert alert-success text-center">{{ session('success') }}</div>
+    </div>
+    @endif
     <div class="col-lg-12">
         <div>
             <p>You have arrived at your current list of contacts</p>
@@ -43,7 +48,7 @@
                         </form>
                     </div>
                     <div class="d-flex justify-content-center mt-2">
-                        <button class="btn btn-primary">Add an Address</button>
+                        <a href="/dasboard/address-book/create/{{ $contact->id }}" class="btn btn-primary">Add an Address</a>
                     </div>
                 </x-dashboard.contact.contact-card>
             @endforeach

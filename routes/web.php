@@ -37,7 +37,7 @@ Route::prefix('dashboard')->group(function() {
     Route::prefix('address-book')->group(function(){
 
         Route::get('/', [AddressBookController::class, 'index']);
-        Route::get('/create', [AddressBookController::class, 'create']);
+        Route::get('/create/{contact_id}', [AddressBookController::class, 'create']);
         Route::post('/create', [AddressBookController::class, 'store']);
         Route::get('/edit/{id}', [AddressBookController::class, 'show']);
         Route::patch('/edit/{id}', [AddressBookController::class, 'update']);
@@ -51,7 +51,8 @@ Route::prefix('dashboard')->group(function() {
         Route::get('/', [ContactController::class, 'index']);
         Route::get('/create', [ContactController::class, 'create']);
         Route::post('/create', [ContactController::class, 'store']);
-        Route::get('/edit/{id}', [ContactController::class, 'update']);
+        Route::get('/show/{id}', [ContactController::class, 'show']);
+        Route::patch('/update/{id}', [ContactController::class, 'update']);
         Route::delete('/delete/{id}', [ContactController::class, 'destroy']);
     });
 });

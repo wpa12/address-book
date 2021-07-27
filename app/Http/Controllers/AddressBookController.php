@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Address;
+use App\Models\Contact;
 
 class AddressBookController extends Controller
 {
@@ -24,9 +25,11 @@ class AddressBookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($contact_id)
     {
-        return view('dashboard.address.create');
+        $contact = Contact::find($contact_id);
+
+        return view('dashboard.address.create', compact('contact'));
     }
 
     /**
