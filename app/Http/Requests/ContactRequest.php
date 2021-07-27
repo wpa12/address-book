@@ -29,6 +29,7 @@ class ContactRequest extends FormRequest
             'middle_name' => 'string|nullable',
             'last_name' => 'string|required',
             'dob'   => 'date|required',
+            'gender' => 'string|required',
             'email' => 'email|required',
             'description' => 'string|required',
         ];

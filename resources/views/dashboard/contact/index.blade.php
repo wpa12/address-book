@@ -21,10 +21,10 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <div class="row">
+        <div class="row justify-content-center">
             @foreach($contacts as $contact)
                 {{-- {{ dd($contact->first_name) }} --}}
-                <x-dashboard.contact.contact-card>
+                <x-dashboard.contact.contact-card :gender="$contact->gender" class="col-lg-4">
                     <div class="avatar"></div>
                     <div>
                         {{ $contact->salutation . ' ' . $contact->first_name . ' ' .  $contact->middle_name . ' '. $contact->last_name }}
@@ -32,7 +32,7 @@
                     <div>
                         {{  date_format($contact->created_at, 'd-m-Y H:i:s') }}
                     </div>
-                    <div>
+                    <div class="d-flex justify-content-between mt-4">
                         <a href="/dashboard/contacts/show/{{ $contact->id }}" class="btn btn-success">Update</a>
                         <form action="/dashboard/contacts/delete/{{ $contact->id }}" method="post">
                         @csrf
