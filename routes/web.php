@@ -54,5 +54,7 @@ Route::prefix('dashboard')->group(function() {
         Route::get('/show/{id}', [ContactController::class, 'show']);
         Route::patch('/update/{id}', [ContactController::class, 'update']);
         Route::delete('/delete/{id}', [ContactController::class, 'destroy']);
+        Route::get('/restore', [ContactController::class,'show_trashed']);
+        Route::patch('/restore/{id}', [ContactController::class, 'restore']);
     });
 });

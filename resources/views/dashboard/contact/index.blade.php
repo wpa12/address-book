@@ -2,6 +2,9 @@
 @section('content')
 
 <div class="row">
+    <div class="col-lg-12">
+        <h2>Contacts</h2>
+    </div>
     @if(session('success'))
     <div class="col-lg-12">
         <div class="alert alert-success text-center">{{ session('success') }}</div>
@@ -18,7 +21,7 @@
                 <a href="/dashboard/contacts/create" class="btn btn-primary">Create Contact</a>
             </div>
             <div class="col-lg-1"> 
-                <a href="/dashboard/contacts/deleted" class="btn btn-primary">Restore a Contact</a>
+                <a href="/dashboard/contacts/restore" class="btn btn-primary">Restore a Contact</a>
             </div>
         </div>
     </div>
@@ -28,7 +31,6 @@
     <div class="col-lg-12">
         <div class="row justify-content-center">
             @foreach($contacts as $contact)
-                {{-- {{ dd($contact->first_name) }} --}}
                 <x-dashboard.contact.contact-card :gender="$contact->gender" class="col-lg-4">
                     <div class="avatar"></div>
                     <div>

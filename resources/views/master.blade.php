@@ -19,12 +19,6 @@
         </style>
     </head>
     <body class="antialiased">
-            {{-- @auth('admin')
-                <ul>
-                    <li><a href="/dashboard">Dashboard</a></li>
-                </ul>
-            @endauth
-             --}}
             @guest
                 <ul>
                     <li><a href="/login">Login</a></li>

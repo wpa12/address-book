@@ -79,7 +79,7 @@
                 
                 <div class="element-container">
                     <label for="description">Description:</label>
-                    <textarea name="description" id="description" style="width:100%; height:200px;" placeholder="e.g. How do you know this contact?" value="{{ $contact->description }}"></textarea>
+                    <textarea name="description" id="description" style="width:100%; height:200px; padding:10px;" placeholder="e.g. How do you know this contact?">{{ $contact->description }}</textarea>
                     @error('description')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror 
