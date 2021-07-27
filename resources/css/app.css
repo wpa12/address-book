@@ -1,0 +1,92 @@
+
+/**
+*
+* Navigation
+*/
+
+#navigation {
+    width:100%;
+    background:#343434;
+    margin-bottom:5rem;
+    padding:1rem;
+}
+
+#navigation li {
+    background:transparent;
+    min-width:200px;
+    text-align:center;
+    cursor:pointer;
+}
+
+#navigation li:hover {
+    background:lightcoral;
+    padding:1rem;
+    padding-top:0.5rem;
+    padding-bottom:0.5rem;
+    cursor:pointer;
+}
+
+
+.navbar h1 {
+    padding:1rem;
+    color:lightpink;
+}
+
+li.nav-item {
+    padding:1rem;
+    display:inline-block;
+
+}
+
+ul {
+    color:white;
+
+}
+nav {
+    background:#343434;
+}
+
+nav a {
+    color:white;
+
+}
+
+nav a:hover {
+    color:lightgrey;
+}
+
+
+
+.image-container {
+    text-align: center;
+}
+
+.card {
+    box-shadow:0px 0px 0px transparent;
+    cursor:pointer;
+    transition: .2s all ease-out;
+}
+.card:hover {
+    box-shadow:5px 5px 5px 2px rgba(0,0,0,0.5);
+    transform:scale(1.1);
+    transition:.2s all ease-in-out;
+}
+
+img.avatar {
+    border-radius:50%;
+    height:150px;
+    width:150px;
+}
+ 
+.element-container {
+    padding-top:10px;
+    padding-bottom:10px;
+}
+
+label {
+    font-weight: 500;
+}
+
+input#other {
+    display:none;
+}
