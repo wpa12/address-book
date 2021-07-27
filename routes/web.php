@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AddressBookController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
@@ -29,15 +30,28 @@ Route::post('/login', [LoginController::class, 'login']);
 // Dashboard Render route.
 Route::get('/dashboard', [DashboardController::class, 'index']);
 
-// Address book Routes
+
 Route::prefix('dashboard')->group(function() {
 
-    Route::get('/address-book', [AddressBookController::class, 'index']);
-    Route::get('/address-book/create', [AddressBookController::class, 'create']);
-    Route::post('/address-book/create', [AddressBookController::class, 'store']);
-    Route::get('/address-book/edit/{id}', [AddressBookController::class, 'show']);
-    Route::patch('/address-book/edit/{id}', [AddressBookController::class, 'update']);
-    Route::get('/address-book/restore', [AddressBookController::class, 'restore']);
-    Route::delete('/address-book/delete/{id}', [AddressBookController::class, 'destroy']);
+    // Address book routes 
+    Route::prefix('address-book')->group(function(){
 
+        Route::get('/', [AddressBookController::class, 'index']);
+        Route::get('/create', [AddressBookController::class, 'create']);
+        Route::post('/create', [AddressBookController::class, 'store']);
+        Route::get('/edit/{id}', [AddressBookController::class, 'show']);
+        Route::patch('/edit/{id}', [AddressBookController::class, 'update']);
+        Route::get('/restore', [AddressBookController::class, 'restore']);
+        Route::delete('/delete/{id}', [AddressBookController::class, 'destroy']);
+    });
+
+    // Contact routes
+
+    Route::prefix('contacts')->group(function() {
+        Route::get('/', [ContactController::class, 'index']);
+        Route::get('/create', [ContactController::class, 'create']);
+        Route::post('/create', [ContactController::class, 'store']);
+        Route::get('/edit/{id}', [ContactController::class, 'update']);
+        Route::delete('/delete/{id}', [ContactController::class, 'destroy']);
+    });
 });

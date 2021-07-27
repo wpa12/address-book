@@ -1,4 +1,5 @@
 @extends('dashboard.master')
+
 @section('content')
     <div class="col s12">
         @foreach ($address as $addr)

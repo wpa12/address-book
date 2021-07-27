@@ -1,5 +1,11 @@
 @extends('dashboard.master')
 @section('content')
-Welcome to the Dashboard, Navigate to the addresses
 
+<div class="row">
+
+    <div class="col-lg-12">
+        Welcome to the Dashboard, Navigate to the addresses
+    </div>
+    
+</div>
 @endsection
