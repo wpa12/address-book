@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\AddressBookController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LoginController; 
+use App\Http\Controllers\LogoutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 
@@ -19,7 +20,7 @@ use App\Http\Controllers\DashboardController;
 */
 
 Route::get('/', function () {
-    return view('master');
+    return view('index');
 });
 
 
@@ -27,15 +28,21 @@ Route::get('/', function () {
 Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'login']);
 
-// Dashboard Render route.
-Route::get('/dashboard', [DashboardController::class, 'index']);
 
+
+
+// Dashboard Render route.
 
 Route::prefix('dashboard')->group(function() {
+    
+    //index page
+    Route::get('/', [DashboardController::class, 'index']);
 
+    //logout
+    Route::get('/logout', [LogoutController::class, 'logout']);
+    
     // Address book routes 
-    Route::prefix('address-book')->group(function(){
-
+    Route::prefix('address-book')->group(function() {
         Route::get('/', [AddressBookController::class, 'index']);
         Route::get('/create/{contact_id}', [AddressBookController::class, 'create']);
         Route::post('/create', [AddressBookController::class, 'store']);
@@ -46,7 +53,6 @@ Route::prefix('dashboard')->group(function() {
     });
 
     // Contact routes
-
     Route::prefix('contacts')->group(function() {
         Route::get('/', [ContactController::class, 'index']);
         Route::get('/create', [ContactController::class, 'create']);

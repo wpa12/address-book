@@ -90,3 +90,14 @@ label {
 input#other {
     display:none;
 }
+
+/* Fontend  */
+
+#homepage {
+    height:100vh;
+    background:url(/images/splash.jpg?1d6a94d3fc4bc7f334389f4209e248e8);
+    background-size:100% 100%;
+    background-repeat: no-repeat;
+    background-position: top;
+
+}

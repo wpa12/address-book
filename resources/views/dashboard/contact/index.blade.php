@@ -1,10 +1,10 @@
 @extends('dashboard.master')
 @section('content')
-
 <div class="row">
     <div class="col-lg-12">
         <h2>Contacts</h2>
     </div>
+    {{-- Render session messages --}}
     @if(session('success'))
     <div class="col-lg-12">
         <div class="alert alert-success text-center">{{ session('success') }}</div>
@@ -29,6 +29,7 @@
 
 <div class="row">
     <div class="col-lg-12">
+        {{-- Generate contact Card from contact-card component  --}}
         <div class="row justify-content-center">
             @foreach($contacts as $contact)
                 <x-dashboard.contact.contact-card :gender="$contact->gender" class="col-lg-4">
