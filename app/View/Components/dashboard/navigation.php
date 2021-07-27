@@ -19,10 +19,9 @@ class navigation extends Component
         $this->nav_items = [
             'logout' => '/dashboard/logout',
             'Dashboard'  => '/dashboard',
-            'View site' => '/',
             'Address Book' => '/dashboard/address-book',
             'Contacts'  => '/dashboard/contacts',
-            'Deleted Items' => '/dashboard/address-book/restore',
+            'Restore a Record' => '/dashboard/address-book/restore',
         ];
     }
 

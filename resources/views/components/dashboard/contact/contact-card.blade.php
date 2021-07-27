@@ -12,32 +12,3 @@
         {{ $slot }}
     </div>
 </div>
-
-
-@push('css')
-
-<style>
-    
-    .image-container {
-        text-align: center;
-    }
-
-    .card {
-        box-shadow:0px 0px 0px transparent;
-        cursor:pointer;
-        transition: .2s all ease-out;
-    }
-    .card:hover {
-        box-shadow:5px 5px 5px 2px rgba(0,0,0,0.5);
-        transform:scale(1.1);
-        transition:.2s all ease-in-out;
-    }
-    
-    img.avatar {
-        border-radius:50%;
-        height:150px;
-        width:150px;
-    }
-</style>
-
-@endpush
