@@ -31,36 +31,39 @@ Route::post('/login', [LoginController::class, 'login']);
 
 
 
-// Dashboard Render route.
-
-Route::prefix('dashboard')->group(function() {
+Route::middleware(['admin'])->group(function() {
     
-    //index page
-    Route::get('/', [DashboardController::class, 'index']);
-
-    //logout
-    Route::get('/logout', [LogoutController::class, 'logout']);
+    // Dashboard Render route.
+    Route::prefix('dashboard')->group(function() {
+        
+        //index page
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+        
+        //logout
+        Route::get('/logout', [LogoutController::class, 'logout']);
+        
+        // Address book routes 
+        Route::prefix('address-book')->group(function() {
+            Route::get('/', [AddressBookController::class, 'index']);
+            Route::get('/create/{contact_id}', [AddressBookController::class, 'create']);
+            Route::post('/create', [AddressBookController::class, 'store']);
+            Route::get('/edit/{id}', [AddressBookController::class, 'show']);
+            Route::patch('/edit/{id}', [AddressBookController::class, 'update']);
+            Route::get('/restore', [AddressBookController::class, 'restore']);
+            Route::delete('/delete/{id}', [AddressBookController::class, 'destroy']);
+        });
+        
+        // Contact routes
+        Route::prefix('contacts')->group(function() {
+            Route::get('/', [ContactController::class, 'index']);
+            Route::get('/create', [ContactController::class, 'create']);
+            Route::post('/create', [ContactController::class, 'store']);
+            Route::get('/show/{id}', [ContactController::class, 'show']);
+            Route::patch('/update/{id}', [ContactController::class, 'update']);
+            Route::delete('/delete/{id}', [ContactController::class, 'destroy']);
+            Route::get('/restore', [ContactController::class,'show_trashed']);
+            Route::patch('/restore/{id}', [ContactController::class, 'restore']);
+        });
+    });
     
-    // Address book routes 
-    Route::prefix('address-book')->group(function() {
-        Route::get('/', [AddressBookController::class, 'index']);
-        Route::get('/create/{contact_id}', [AddressBookController::class, 'create']);
-        Route::post('/create', [AddressBookController::class, 'store']);
-        Route::get('/edit/{id}', [AddressBookController::class, 'show']);
-        Route::patch('/edit/{id}', [AddressBookController::class, 'update']);
-        Route::get('/restore', [AddressBookController::class, 'restore']);
-        Route::delete('/delete/{id}', [AddressBookController::class, 'destroy']);
-    });
-
-    // Contact routes
-    Route::prefix('contacts')->group(function() {
-        Route::get('/', [ContactController::class, 'index']);
-        Route::get('/create', [ContactController::class, 'create']);
-        Route::post('/create', [ContactController::class, 'store']);
-        Route::get('/show/{id}', [ContactController::class, 'show']);
-        Route::patch('/update/{id}', [ContactController::class, 'update']);
-        Route::delete('/delete/{id}', [ContactController::class, 'destroy']);
-        Route::get('/restore', [ContactController::class,'show_trashed']);
-        Route::patch('/restore/{id}', [ContactController::class, 'restore']);
-    });
 });
