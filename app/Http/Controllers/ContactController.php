@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Http\Requests\ContactRequest;
 use App\Models\Contact;
 
@@ -87,6 +88,17 @@ class ContactController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $contact = Contact::find($id);
+        $contact->delete();
+
+        return redirect('/dashboard/contacts');
+    }
+
+    public function restore($id) 
+    {
+        $contact = Contact::find($id);
+        $contact->restore();
+
+        return redirect('/dashboard/contacts/trashed');
     }
 }
