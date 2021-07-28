@@ -41,7 +41,7 @@ class ContactController extends Controller
         $contact = Contact::create($request->all());
         $contact->save();
 
-        return redirect('/dashboard/contacts')->with('success', 'Contact created successfully');
+        return redirect('/dashboard/contacts')->with('success', 'Contact created successfully.');
 
     }
 
@@ -96,7 +96,7 @@ class ContactController extends Controller
         $contact = Contact::find($id);
         $contact->delete();
 
-        return redirect('/dashboard/contacts')->with('success', 'Item has been removed successfully');
+        return redirect('/dashboard/contacts')->with('success', 'Item has been removed successfully.');
     }
 
     public function restore($id) 

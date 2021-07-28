@@ -46,11 +46,11 @@ Route::middleware(['admin'])->group(function() {
         Route::prefix('address-book')->group(function() {
             Route::get('/', [AddressBookController::class, 'index']);
             Route::get('/create/{contact_id}', [AddressBookController::class, 'create']);
-            Route::post('/create', [AddressBookController::class, 'store']);
-            Route::get('/edit/{id}', [AddressBookController::class, 'show']);
-            Route::patch('/edit/{id}', [AddressBookController::class, 'update']);
-            Route::get('/restore', [AddressBookController::class, 'restore']);
-            Route::delete('/delete/{id}', [AddressBookController::class, 'destroy']);
+            Route::post('/create/{contact_id}', [AddressBookController::class, 'store']);
+            // Route::get('/edit/{id}', [AddressBookController::class, 'show']);
+            // Route::patch('/edit/{id}', [AddressBookController::class, 'update']);
+            // Route::get('/restore', [AddressBookController::class, 'restore']);
+            // Route::delete('/delete/{id}', [AddressBookController::class, 'destroy']);
         });
         
         // Contact routes

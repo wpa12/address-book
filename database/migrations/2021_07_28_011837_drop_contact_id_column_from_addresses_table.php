@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddAddressTypeIdToAddressesTable extends Migration
+class DropContactIdColumnFromAddressesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddAddressTypeIdToAddressesTable extends Migration
     public function up()
     {
         Schema::table('addresses', function (Blueprint $table) {
-            $table->unsignedBigInteger('address_type_id')->nullable()->after('region');
+            $table->dropColumn('contact_id');
         });
     }
 

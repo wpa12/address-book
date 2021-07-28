@@ -42,6 +42,6 @@ class Contact extends Model
 
     public function address ()
     {
-        return $this->hasMany(Address::class);
+        return $this->BelongsToMany(Address::class);
     } 
 }

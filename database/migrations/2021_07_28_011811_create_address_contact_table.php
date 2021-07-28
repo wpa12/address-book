@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddAddressTypeIdToAddressesTable extends Migration
+class CreateAddressContactTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddAddressTypeIdToAddressesTable extends Migration
      */
     public function up()
     {
-        Schema::table('addresses', function (Blueprint $table) {
-            $table->unsignedBigInteger('address_type_id')->nullable()->after('region');
+        Schema::create('address_contact', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('address_id');
+            $table->unsignedBigInteger('contact_id');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class AddAddressTypeIdToAddressesTable extends Migration
      */
     public function down()
     {
-        Schema::table('addresses', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('address_contact');
     }
 }

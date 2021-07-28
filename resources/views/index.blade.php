@@ -14,7 +14,7 @@
               @method('post')
                 <div class="form-group">
                   <label for="email">Email address</label>
-                  <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+                  <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email" value="{{ old('email') }}">
                   @error('email')
                     <div class="alert alert-danger">{{ $message }}</div>
                   @enderror

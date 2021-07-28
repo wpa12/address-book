@@ -2,12 +2,36 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddressRequest;
 use Illuminate\Http\Request;
 use App\Models\Address;
+use App\Models\AddressContact;
 use App\Models\Contact;
+use App\Models\AddressType;
+use Illuminate\Support\Facades\DB;
 
 class AddressBookController extends Controller
 {
+
+    /**
+     * Property Declarations.
+     */
+    public $contact;
+    public $address_types;
+    public $countries;
+
+
+    /**
+     * Assign Class properties
+     */
+    public function __construct(AddressType $address_type) {
+        
+        $this->address_types = $address_type->all();
+        
+        //assigning countries Rinvex composer package for create form.
+        $this->countries = \Rinvex\Country\CountryLoader::countries();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,9 +39,9 @@ class AddressBookController extends Controller
      */
     public function index()
     {
-        $address = Address::all();
-
-        return view('dashboard.address.index', compact('address'));
+        $records = AddressContact::all();
+        // $addresses = AddressContact::all();
+        return view('dashboard.address.index', compact('records'));
     }
 
     /**
@@ -27,9 +51,16 @@ class AddressBookController extends Controller
      */
     public function create($contact_id)
     {
+
         $contact = Contact::find($contact_id);
 
-        return view('dashboard.address.create', compact('contact'));
+        //assigning to save database transactions.
+        $this->contact = $contact;
+        $address_types = $this->address_types;
+        $countries  = $this->countries;
+        sort($countries);
+
+        return view('dashboard.address.create', compact('contact', 'address_types', 'countries'));
     }
 
     /**
@@ -38,9 +69,33 @@ class AddressBookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AddressRequest $request, $contact_id)
     {
-        //
+
+        $address = Address::create([
+            'address_type_id' => $request->address_type_id,
+            'first_line' => $request->first_line,
+            'second_line' => $request->second_line,
+            'city' => $request->city,
+            'postcode' => $request->postcode,
+            'region' => $request->region,
+            'contact_id' => $contact_id,
+        ]);
+
+        $address->save();
+
+        $added_address = DB::table('addresses')->where('contact_id', $contact_id)->latest()->first();
+        
+        $pivot = AddressContact::create([
+            'address_id' => $added_address->id,
+            'contact_id' => $contact_id,
+        ]);
+
+        $pivot->save();
+
+        // dd($added_address);
+
+        return redirect('/dashboard/address-book')->with('success', 'Address has been created.');
     }
 
     /**

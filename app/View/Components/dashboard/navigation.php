@@ -17,11 +17,11 @@ class navigation extends Component
     public function __construct()
     {
         $this->nav_items = [
-            'logout' => '/dashboard/logout',
+            'Logout' => '/dashboard/logout',
             'Dashboard'  => '/dashboard',
             'Address Book' => '/dashboard/address-book',
             'Contacts'  => '/dashboard/contacts',
-            'Restore a Record' => '/dashboard/address-book/restore',
+            // 'Restore a Record' => '/dashboard/address-book/restore',
         ];
     }
 
