@@ -38,7 +38,6 @@
                     </x-dashboard.contact.contact-card>
                     @endforeach
                 </div>
-                
             </div>
         </div>
     </div>

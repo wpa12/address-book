@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactRequest;
 use App\Models\Contact;
+use App\Models\Address;
 
 class ContactController extends Controller
 {
@@ -94,6 +95,9 @@ class ContactController extends Controller
     public function destroy($id)
     {
         $contact = Contact::find($id);
+
+        $addresses = Address::where('contact_id', $id)->pluck('id')->toArray();
+        
         $contact->delete();
 
         return redirect('/dashboard/contacts')->with('success', 'Item has been removed successfully.');
@@ -101,8 +105,11 @@ class ContactController extends Controller
 
     public function restore($id) 
     {
+        $contact = Contact::withTrashed()->where('id', $id)->first();
+        // $addresses = Address::where('contact_id', $id)->pluck('id')->toArray();
+        // // dd($addresses);
+        // $contact->address()->attach($addresses);
 
-        $contact = Contact::onlyTrashed($id)->first();
         $contact->restore();
 
         return redirect('/dashboard/contacts/restore')->with('success','Item restored successfully.');

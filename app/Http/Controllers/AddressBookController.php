@@ -39,8 +39,11 @@ class AddressBookController extends Controller
      */
     public function index()
     {
-        $records = AddressContact::all();
-        // $addresses = AddressContact::all();
+        // $records = AddressContact::all();
+        $records = AddressContact::whereHas('contact', function($query) {
+            $query->where('deleted_at', null);
+        })->get();
+
         return view('dashboard.address.index', compact('records'));
     }
 

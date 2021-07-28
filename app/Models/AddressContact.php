@@ -17,6 +17,7 @@ class AddressContact extends Model
         'contact_id',
         'created_at',
         'updated_at',
+
     ];
 
     protected $fillable = [
