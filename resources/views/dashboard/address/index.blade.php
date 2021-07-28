@@ -24,6 +24,7 @@
                         <th scope="col">Full Name</th>
                         <th scope="col">Email</th>
                         <th scope="col">Full Address</th>
+                        <th scope="col">Address Type</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,6 +43,20 @@
                                 {{ $record->address->postcode }} <br>
                                 {{ $record->address->region }}
                             </div>
+                            <div>
+                                <a href="/dashboard/address-book/update/{{ $record->address->id }}" class="btn btn-primary mt-3 mb-3">Update Address</a>
+                            </div>
+                        </td>
+                        <td>
+
+                            @if($record->address->address_type_id == 1) 
+                                {{ 'Personal' }}
+                            @elseif($record->address->address_type_id == 2)
+                                {{ 'Business' }}
+                            @else
+                                {{ 'Other' }}
+                            @endif
+                            {{-- {{ dd($record->address_type()) }} --}}
                         </td>
                     </tr>
                     @endforeach
@@ -62,7 +77,7 @@
         dataNames.push(elem.dataset.dataName);
         console.log(dataNames);
     });
-    
+
     search.addEventListener('keyup', function(){
         records.forEach(function(elem){
         });

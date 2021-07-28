@@ -43,8 +43,8 @@ class Address extends Model
         return $this->belongsToMany(Contact::class);
     }
 
-    public function type () 
+    public function address_type () 
     {
-        return $this->hasOne(Address::class);
+        return $this->hasOne(AddressType::class);
     }
 }

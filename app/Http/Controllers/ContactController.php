@@ -96,7 +96,7 @@ class ContactController extends Controller
     {
         $contact = Contact::find($id);
 
-        $addresses = Address::where('contact_id', $id)->pluck('id')->toArray();
+        // $addresses = Address::where('contact_id', $id)->pluck('id')->toArray();
         
         $contact->delete();
 
@@ -106,9 +106,6 @@ class ContactController extends Controller
     public function restore($id) 
     {
         $contact = Contact::withTrashed()->where('id', $id)->first();
-        // $addresses = Address::where('contact_id', $id)->pluck('id')->toArray();
-        // // dd($addresses);
-        // $contact->address()->attach($addresses);
 
         $contact->restore();
 
@@ -118,7 +115,8 @@ class ContactController extends Controller
     /**
      * Restore a deleted item.
      */
-    public function show_trashed() {
+    public function show_trashed() 
+    {
         $contacts = Contact::onlyTrashed()->get();
 
         return view('dashboard.contact.trashed', compact('contacts'));

@@ -39,7 +39,6 @@ class AddressBookController extends Controller
      */
     public function index()
     {
-        // $records = AddressContact::all();
         $records = AddressContact::whereHas('contact', function($query) {
             $query->where('deleted_at', null);
         })->get();
@@ -109,7 +108,12 @@ class AddressBookController extends Controller
      */
     public function show($id)
     {
-        //
+        $address = Address::find($id);
+        $contact = Contact::where('id', $address->contact_id)->first();
+        $address_types = $this->address_types;
+        $countries = $this->countries;
+
+        return view('dashboard.address.show', compact('address', 'address_types', 'countries', 'contact'));
     }
 
     /**
@@ -130,9 +134,12 @@ class AddressBookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AddressRequest $request, $id)
     {
-        //
+        $address = Address::find($id);
+        $address->fill($request->all());
+        $address->save();
+        return redirect('/dashboard/address-book')->with('updated', 'Address updated successfully.');
     }
 
     /**

@@ -14,10 +14,16 @@ class AddressType extends Model
     protected $visible = [
         'id',
         'name',
+        'created_at',
+        'updated_at',
+        'deleted_at',
     ];
 
     protected $fillable = [
         'name',
+        'created_at',
+        'updated_at',
+        'deleted_at',
     ];
 
     public function address ()
