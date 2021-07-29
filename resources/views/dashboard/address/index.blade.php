@@ -9,8 +9,8 @@
                 <div class="col-lg-12">
                     <form action="" method="post">
                         <div>
-                            <label for="search">Search</label>
-                            <input type="text" class="form-control" id="search" name="search" placeholder="Search Records - E.g. Joe Bloggs">
+                            <label for="filter">Filter Results:</label>
+                            <input type="text" class="form-control" id="filter" name="filter" placeholder="Filter Results - E.g. Joe Bloggs">
                         </div>
                     </form>
                 </div>
@@ -29,7 +29,7 @@
                 </thead>
                 <tbody>
                     @foreach($records as $record)
-                    <tr data-contact-name="{{  $record->contact->first_name . ' ' . $record->contact->last_name }}" data-city="{{ $record->address->city }}" class="record">
+                    <tr data-contact-name="{{ strtolower($record->contact->first_name . ' ' . $record->contact->last_name) }}" class="record">
                         <th scope="row">{{ $record->id }}</th>
                         <td>{{ $record->contact->first_name . ' ' . $record->contact->middle_name . ' ' . $record->contact->last_name }}</td>
                         <td>
@@ -59,7 +59,7 @@
                             @else
                                 {{ 'Other' }}
                             @endif
-                            {{-- {{ dd($record->address_type()) }} --}}
+
                         </td>
                     </tr>
                     @endforeach
@@ -72,17 +72,30 @@
 @push('scripts')
 
 <script>
-    let search = document.querySelector('#search');
-    let records = document.querySelectorAll('.record');
-    let dataNames = [];
+    
+    // assign #filter to filter
+    const filter = document.getElementById('filter');
+    
+    //add event listener for keyup event
+    filter.addEventListener('keyup', function (e) {
+        
+        //get search value and convert it to lowercase
+        const val = e.target.value.toLowerCase();
 
-    records.forEach(function(elem){
-        dataNames.push(elem.dataset.dataName);
-        console.log(dataNames);
-    });
+        // create an array of records
+        const records = document.querySelectorAll('.record');
+    
+        //cycle array records
+        records.forEach(function(record){
+            //assign dataset.contactName attributes to attr
+            const attr = record.dataset.contactName;
 
-    search.addEventListener('keyup', function(){
-        records.forEach(function(elem){
+            // find index of the value and hide or show each result accordingly.
+            if(attr.toLowerCase().indexOf(val) != -1){
+                record.style.display = 'table-row';
+            } else {
+                record.style.display = 'none';
+            }
         });
     });
 </script>

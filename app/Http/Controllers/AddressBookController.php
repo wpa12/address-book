@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AddressRequest;
-use Illuminate\Http\Request;
 use App\Models\Address;
 use App\Models\AddressContact;
 use App\Models\Contact;
@@ -142,25 +141,4 @@ class AddressBookController extends Controller
         return redirect('/dashboard/address-book')->with('updated', 'Address updated successfully.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
-    /**
-     *  Restore a deleted resource from.
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-
-     public function restore($id)
-     {
-         // find with trashed.
-     }
 }

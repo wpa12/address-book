@@ -60,9 +60,7 @@
                         <div class="d-flex justify-content-center mt-2">
                             <a href="/dashboard/address-book/create/{{ $contact->id }}" class="btn btn-primary">Add an Address</a>
                         </div>
-                        {{-- <div class="mt-2 text-center">
-                            <a href="/dashboard/contacts/show/{{ $contact->id }}">View contact</a>
-                        </div> --}}
+
                     </x-dashboard.contact.contact-card>
                     @endforeach
                 </div>
