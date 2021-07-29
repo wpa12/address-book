@@ -31,6 +31,7 @@ class ContactRequest extends FormRequest
             'dob'   => 'date|required',
             'gender' => 'string|required',
             'email' => 'email|required',
+            'tel'   => 'string|min:11|nullable',
             'description' => 'string|required',
         ];
     }

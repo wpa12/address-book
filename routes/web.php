@@ -49,9 +49,6 @@ Route::middleware(['admin'])->group(function() {
             Route::post('/create/{contact_id}', [AddressBookController::class, 'store']);
             Route::get('/update/{id}', [AddressBookController::class, 'show']);
             Route::patch('/update/{id}', [AddressBookController::class, 'update']);
-            // Route::patch('/edit/{id}', [AddressBookController::class, 'update']);
-            // Route::get('/restore', [AddressBookController::class, 'restore']);
-            // Route::delete('/delete/{id}', [AddressBookController::class, 'destroy']);
         });
         
         // Contact routes
@@ -60,6 +57,7 @@ Route::middleware(['admin'])->group(function() {
             Route::get('/create', [ContactController::class, 'create']);
             Route::post('/create', [ContactController::class, 'store']);
             Route::get('/show/{id}', [ContactController::class, 'show']);
+            Route::get('/update/{id}', [ContactController::class, 'edit']);
             Route::patch('/update/{id}', [ContactController::class, 'update']);
             Route::delete('/delete/{id}', [ContactController::class, 'destroy']);
             Route::get('/restore', [ContactController::class,'show_trashed']);

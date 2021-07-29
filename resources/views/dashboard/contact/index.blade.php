@@ -38,7 +38,6 @@
                 <div class="row justify-content-evenly">
                     @foreach($contacts as $contact)
                     <x-dashboard.contact.contact-card :gender="$contact->gender" class="col-lg-4">
-                        <div class="avatar"></div>
                         <div>
                             {{ $contact->salutation . ' ' . $contact->first_name . ' ' .  $contact->middle_name . ' '. $contact->last_name }}
                         </div>
@@ -47,8 +46,11 @@
                                 {{  'Created at: ' .date_format($contact->created_at, 'd-m-Y H:i:s') }}
                             </p>
                         </div>
+                        <div class="mt-2 text-center">
+                            <a href="/dashboard/contacts/show/{{ $contact->id }}">View Details</a>
+                        </div>
                         <div class="d-flex justify-content-between mt-4">
-                            <a href="/dashboard/contacts/show/{{ $contact->id }}" class="btn btn-success">Update</a>
+                            <a href="/dashboard/contacts/update/{{ $contact->id }}" class="btn btn-success">Update</a>
                             <form action="/dashboard/contacts/delete/{{ $contact->id }}" method="post">
                                 @csrf
                                 @method('delete')
@@ -58,6 +60,9 @@
                         <div class="d-flex justify-content-center mt-2">
                             <a href="/dashboard/address-book/create/{{ $contact->id }}" class="btn btn-primary">Add an Address</a>
                         </div>
+                        {{-- <div class="mt-2 text-center">
+                            <a href="/dashboard/contacts/show/{{ $contact->id }}">View contact</a>
+                        </div> --}}
                     </x-dashboard.contact.contact-card>
                     @endforeach
                 </div>

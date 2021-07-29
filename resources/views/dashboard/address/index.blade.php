@@ -10,7 +10,7 @@
                     <form action="" method="post">
                         <div>
                             <label for="search">Search</label>
-                            <input type="text" class="form-control" id="search" name="search" placeholder="Search Records - E.g. Contact name, email address, address, postcode, city">
+                            <input type="text" class="form-control" id="search" name="search" placeholder="Search Records - E.g. Joe Bloggs">
                         </div>
                     </form>
                 </div>
@@ -22,17 +22,20 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Full Name</th>
-                        <th scope="col">Email</th>
+                        <th scope="col">Email/Tel</th>
                         <th scope="col">Full Address</th>
                         <th scope="col">Address Type</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($records as $record)
-                    <tr data-contact-name="{{  $record->contact->first_name . ' ' . $record->contact->last_name }}" data-address="{{ $record->address->first_line }}" data-city="{{ $record->address->city }}" data-email="{{ $record->contact->email }}" class="record">
+                    <tr data-contact-name="{{  $record->contact->first_name . ' ' . $record->contact->last_name }}" data-city="{{ $record->address->city }}" class="record">
                         <th scope="row">{{ $record->id }}</th>
                         <td>{{ $record->contact->first_name . ' ' . $record->contact->middle_name . ' ' . $record->contact->last_name }}</td>
-                        <td><a href="mailto:{{ $record->contact->emaiil }}">{{ $record->contact->email }}</a></td>
+                        <td>
+                            <a href="mailto:{{ $record->contact->emaiil }}">{{ $record->contact->email }}</a><br>
+                            <a href="tel:{{ $record->contact->tel }}">{{ $record->contact->tel }}</a>
+                        </td>
                         <td> 
                             <div>
                                 {{ $record->address->first_line  }} <br>

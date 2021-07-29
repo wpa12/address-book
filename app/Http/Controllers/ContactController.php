@@ -55,7 +55,7 @@ class ContactController extends Controller
     public function show($id)
     {
         $contact = Contact::find($id);
-
+        
         return view('dashboard.contact.show', compact('contact'));
     }
 
@@ -67,7 +67,9 @@ class ContactController extends Controller
      */
     public function edit($id)
     {
-        //
+        $contact = Contact::find($id);
+
+        return view('dashboard.contact.edit', compact('contact'));
     }
 
     /**
@@ -121,4 +123,5 @@ class ContactController extends Controller
 
         return view('dashboard.contact.trashed', compact('contacts'));
     }
+
 }
