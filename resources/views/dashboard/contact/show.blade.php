@@ -43,17 +43,4 @@
     </div>
 </div>
 
-<style>
-    .details-container {
-        width:100%;
-        background:#f6f6f6;
-        border-radius:5px;
-    }
-
-    .details-container ul li {
-        color:black;
-        list-style: none;
-        padding:.5rem;
-    }
-</style>
 @endsection
