@@ -1842,6 +1842,31 @@ module.exports = {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+function filterAddresses() {
+  // assign #filter to filter
+  var filter = document.getElementById('filter'); //add event listener for keyup event
+
+  filter.addEventListener('keyup', function (e) {
+    //get search value and convert it to lowercase
+    var val = e.target.value.toLowerCase(); // create an array of records
+
+    var records = document.querySelectorAll('.record'); //cycle array records
+
+    records.forEach(function (record) {
+      //assign dataset.contactName attributes to attr
+      var attr = record.dataset.contactName; // find index of the value and hide or show each result accordingly.
+
+      if (attr.toLowerCase().indexOf(val) != -1) {
+        record.style.display = 'table-row';
+      } else {
+        record.style.display = 'none';
+      }
+    });
+  });
+}
+
+filterAddresses();
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
