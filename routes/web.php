@@ -29,8 +29,6 @@ Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'login']);
 
 
-
-
 Route::middleware(['admin'])->group(function() {
     
     // Dashboard Render route.
