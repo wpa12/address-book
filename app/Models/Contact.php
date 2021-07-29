@@ -42,6 +42,9 @@ class Contact extends Model
         'deleted_at',
     ];
 
+    /**
+     * Add address relationship to Model
+     */
     public function address ()
     {
         return $this->BelongsToMany(Address::class);

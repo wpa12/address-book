@@ -26,6 +26,9 @@ class AddressType extends Model
         'deleted_at',
     ];
 
+    /**
+     * Adding address relation to model.
+     */
     public function address ()
     {
         return $this->belongsTo(Address::class);

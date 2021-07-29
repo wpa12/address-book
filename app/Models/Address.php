@@ -38,11 +38,17 @@ class Address extends Model
         'deleted_at',
     ];
 
+    /**
+     * Add Contact Relationship to model.
+     */
     public function contact () 
     {
         return $this->belongsToMany(Contact::class);
     }
 
+    /**
+     * Add Address Type relationship to model.
+     */
     public function address_type () 
     {
         return $this->hasOne(AddressType::class);
