@@ -2,7 +2,7 @@
     <div>
         <div class="title">
             <h1>
-                Unity5 Address Book Application
+                Wayne's Address Book Application
             </h1>
         </div>
         <ul class="navbar-nav d-inline-block">

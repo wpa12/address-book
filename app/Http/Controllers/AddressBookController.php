@@ -29,6 +29,7 @@ class AddressBookController extends Controller
         
         //assigning countries Rinvex composer package for create form.
         $this->countries = \Rinvex\Country\CountryLoader::countries();
+        asort($this->countries);
     }
 
     /**
@@ -59,7 +60,7 @@ class AddressBookController extends Controller
         $this->contact = $contact;
         $address_types = $this->address_types;
         $countries  = $this->countries;
-        sort($countries);
+        // asort($countries);
 
         return view('dashboard.address.create', compact('contact', 'address_types', 'countries'));
     }
