@@ -115,3 +115,13 @@ input#other {
     background-position: top;
 
 }
+
+/* Media Queries */
+
+@media screen and (max-width:1024px){
+    #homepage {
+        background-size:cover;
+        background-position:center;
+    }
+
+}

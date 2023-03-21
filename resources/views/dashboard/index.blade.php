@@ -8,7 +8,7 @@
                 <div>
                     <h2>Welcome</h2>
                     <p>
-                        Welcome to the Unity5 Address book Dashboard.                    
+                        Welcome to the Wayne's Address book Dashboard.                    
                     </p>
                 </div>
                 

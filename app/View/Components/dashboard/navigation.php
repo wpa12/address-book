@@ -4,7 +4,7 @@ namespace App\View\Components\dashboard;
 
 use Illuminate\View\Component;
 
-class navigation extends Component
+class Navigation extends Component
 {
 
     public $nav_items;
@@ -21,7 +21,6 @@ class navigation extends Component
             'Dashboard'  => '/dashboard',
             'Address Book' => '/dashboard/address-book',
             'Contacts'  => '/dashboard/contacts',
-            // 'Restore a Record' => '/dashboard/address-book/restore',
         ];
     }
 

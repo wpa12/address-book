@@ -26,7 +26,7 @@ class UserFactory extends Factory
     {
         return [
             'name' => 'admin',
-            'email' => 'admin@unity5.com',
+            'email' => 'wpa12@live.com',
             'email_verified_at' => now(),
             'password' => Hash::make('admin123!'), // password
             'remember_token' => Str::random(10),
